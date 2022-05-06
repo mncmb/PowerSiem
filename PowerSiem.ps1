@@ -74,6 +74,10 @@ while ($true)
             $output.add("DestinationIp", $evt.DestinationIp)
             $output.add("DestinationPort", $evt.DestinationPort)
             $output.add("DestinationHost", $evt.DestinationHostname)
+            $output.add("SourceIp", $evt.SourceIp)
+            $output.add("SourcePort", $evt.SourcePort)
+            $output.add("SourceHost", $evt.SourceHostname)
+            $output.add("RuleName", $evt.RuleName)
             write-alert $output
         }
         if ($evt.id -eq 5) {
@@ -102,6 +106,11 @@ while ($true)
         if ($evt.id -eq 8) {
             $output = @{}
             $output.add("Type", "Remote Thread Created")
+            $output.add("SourceImage", $evt.SourceImage)
+            $output.add("SourceProcessId", $evt.SourceProcessId)
+            $output.add("TargetProcessId", $evt.TargetProcessId)
+            $output.add("TargetImage", $evt.TargetImage)
+            $output.add("StartAddress", $evt.StartAddress)
             write-alert $output
         }
         if ($evt.id -eq 9) {
@@ -112,6 +121,12 @@ while ($true)
         if ($evt.id -eq 10) {
             $output = @{}
             $output.add("Type", "Inter-Process Access")
+            $output.add("SourceImage", $evt.SourceImage)
+            $output.add("SourceProcessId", $evt.SourceProcessId)
+            $output.add("TargetProcessId", $evt.TargetProcessId)
+            $output.add("TargetImage", $evt.TargetImage)
+            $output.add("GrantedAccess", $evt.GrantedAccess)
+            $output.add("CallTrace", $evt.CallTrace)
             write-alert $output
         }
         if ($evt.id -eq 11) {
@@ -127,21 +142,38 @@ while ($true)
         if ($evt.id -eq 12) {
             $output = @{}
             $output.add("Type", "Registry Added or Deleted")
+            $output.add("Image", $evt.Image)
+            $output.add("ProcessId", $evt.ProcessId)
+            $output.add("TargetObject", $evt.TargetObject)
+            $output.add("Details", $evt.Details)
             write-alert $output
         }
         if ($evt.id -eq 13) {
             $output = @{}
             $output.add("Type", "Registry Set")
+            $output.add("Image", $evt.Image)
+            $output.add("ProcessId", $evt.ProcessId)
+            $output.add("TargetObject", $evt.TargetObject)
+            $output.add("Details", $evt.Details)
             write-alert $output
         }
         if ($evt.id -eq 14) {
             $output = @{}
             $output.add("Type", "Registry Object Renamed")
+            $output.add("Image", $evt.Image)
+            $output.add("ProcessId", $evt.ProcessId)
+            $output.add("TargetObject", $evt.TargetObject)
+            $output.add("Details", $evt.Details)
             write-alert $output
         }
         if ($evt.id -eq 15) {
             $output = @{}
             $output.add("Type", "ADFS Created")
+            $output.add("Image", $evt.Image)
+            $output.add("PID", $evt.ProcessID)
+            $output.add("User", $evt.User)
+            $output.add("File", $evt.TargetFilename)
+            $output.add("Hash", $evt.Hash)
             write-alert $output
         }
         if ($evt.id -eq 16) {
@@ -152,11 +184,19 @@ while ($true)
         if ($evt.id -eq 17) {
             $output = @{}
             $output.add("Type", "Pipe Created")
+            $output.add("Image", $evt.Image)
+            $output.add("PID", $evt.ProcessID)
+            $output.add("User", $evt.User)
+            $output.add("PipeName", $evt.PipeName)
             write-alert $output
         }
         if ($evt.id -eq 18) {
             $output = @{}
             $output.add("Type", "Pipe Connected")
+            $output.add("Image", $evt.Image)
+            $output.add("PID", $evt.ProcessID)
+            $output.add("User", $evt.User)
+            $output.add("PipeName", $evt.PipeName)
             write-alert $output
         }
         if ($evt.id -eq 19) {
@@ -177,6 +217,10 @@ while ($true)
         if ($evt.id -eq 22) {
             $output = @{}
             $output.add("Type", "DNS Query")
+            $output.add("PID", $evt.ProcessID)
+            $output.add("Query", $evt.QueryName)
+            $output.add("Result", $evt.QueryResults)
+            $output.add("Process", $evt.Image)
             write-alert $output
         }
         if ($evt.id -eq 23) {
